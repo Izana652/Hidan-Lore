@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Ancien Temps.. Erebe Ryomen</title>
+    
+    <link rel="icon" type="image/png" href="https://imgur.com/kIYSvXM.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Noto+Sans+JP:wght@300;700&family=Shojumaru&family=Cormorant+Garamond:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --kido-red: #ff0000;
+            --kido-glow: rgba(255, 0, 0, 0.6);
+            --bg-ultra-dark: #020000;
+            --text-main: #f5f5f5;
+            --transition-main: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            scrollbar-gutter: stable;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+            border: 2px solid #050000;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--kido-red);
+            box-shadow: 0 0 10px var(--kido-red);
+        }
+
+        * { cursor: default; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-ultra-dark);
+            color: var(--text-main);
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        body:has(.details-section:target) {
+            overflow: hidden;
+        }
+
+        .background-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(8px); 
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(120, 0, 0, 0.2) 0%, transparent 80%),
+                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.85;
+            transform: scale(1.1);
+            will-change: transform;
+        }
+
+        .vignette {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.97) 100%);
+            z-index: 0; pointer-events: none;
+        }
+
+        #sakura-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; opacity: 0.3; }
+
+        header {
+            position: fixed; width: 100%; padding: 30px 80px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: var(--transition-main);
+        }
+        header.scrolled { 
+            background: rgba(0,0,0,0.92); 
+            backdrop-filter: blur(20px); 
+            padding: 15px 80px; 
+            border-bottom: 1px solid rgba(255,0,0,0.2); 
+        }
+
+        .logo-top { height: 70px; filter: drop-shadow(0 0 15px var(--kido-glow)); transition: var(--transition-main); }
+        nav ul { display: flex; list-style: none; gap: 50px; }
+        nav ul li a { text-decoration: none; color: #fff; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 5px; opacity: 0.5; transition: 0.5s ease; }
+        nav ul li a:hover { opacity: 1; color: var(--kido-red); text-shadow: 0 0 15px var(--kido-red); }
+
+        .hero { position: relative; z-index: 3; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .mist-title { 
+            font-family: 'Shojumaru', cursive; font-size: clamp(2.5rem, 8vw, 5rem); 
+            color: #fff; text-shadow: 0 0 50px var(--kido-red); 
+            margin: 0; line-height: 1.2; text-align: center; 
+            animation: pulseText 8s infinite ease-in-out; 
+        }
+        @keyframes pulseText { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        .hero-subtitle { font-family: 'Cinzel'; color: var(--kido-red); letter-spacing: 15px; font-size: 0.9rem; opacity: 0.8; margin-top: 15px; font-weight: 700; text-align: center; }
+
+        .main-section { position: relative; z-index: 3; padding: 0 12% 120px; display: flex; justify-content: center; }
+        .lore-grid { max-width: 500px; width: 100%; }
+
+        .clickable-card {
+            background: rgba(15, 0, 0, 0.45);
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            padding: 70px 40px; border-radius: 4px;
+            transition: var(--transition-main);
+            text-align: center; backdrop-filter: blur(8px);
+            display: flex; flex-direction: column; align-items: center;
+            text-decoration: none; color: inherit;
+            will-change: transform, box-shadow;
+            transform: translateY(0);
+        }
+
+        .clickable-card:hover {
+            background: rgba(45, 0, 0, 0.6);
+            transform: translateY(-20px);
+            border-color: var(--kido-red);
+            box-shadow: 0 30px 60px rgba(255, 0, 0, 0.2);
+        }
+
+        .logo-spell-grid { 
+            width: 160px; height: 160px; 
+            border-radius: 50%; 
+            margin-bottom: 35px; border: 1px solid var(--kido-red); 
+            padding: 12px; filter: drop-shadow(0 0 10px var(--kido-glow)); 
+            transition: var(--transition-main);
+        }
+
+        .clickable-card:hover .logo-spell-grid { 
+            filter: drop-shadow(0 0 30px var(--kido-red));
+            transform: scale(1.1) rotate(8deg);
+        }
+
+        .clickable-card h3 { font-family: 'Cinzel'; font-size: 1.8rem; color: #fff; letter-spacing: 5px; margin-bottom: 15px; transition: 0.4s; }
+        .clickable-card:hover h3 { 
+            text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+        }
+        
+        .clickable-card p { font-family: 'Cormorant Garamond'; font-size: 1.25rem; color: #bbb; font-style: italic; line-height: 1.5; }
+
+        .details-section { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.96); z-index: 3000; 
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            backdrop-filter: blur(25px);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), visibility 0.8s;
+            overflow: hidden;
+        }
+        
+        .details-section:target { opacity: 1; visibility: visible; }
+
+        .content-box { 
+            max-width: 950px; width: 92%; background: #050000; 
+            padding: 60px; border: 1px solid var(--kido-red); 
+            position: relative; text-align: center;
+            box-shadow: 0 0 100px rgba(255, 0, 0, 0.2);
+            transform: translateY(100px) scale(0.9);
+            transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .details-section:target .content-box { transform: translateY(0) scale(1); }
+
+        .corner-logo {
+            position: absolute; width: 45px; opacity: 0.6;
+            filter: drop-shadow(0 0 5px var(--kido-red));
+        }
+        .corner-logo.top-left { top: 25px; left: 25px; }
+        .corner-logo.top-right { top: 25px; right: 25px; }
+
+        .btn-close { 
+            display: inline-block; padding: 15px 55px; margin-top: 40px; 
+            border: 1px solid var(--kido-red); color: var(--kido-red); 
+            text-decoration: none; font-family: 'Cinzel'; letter-spacing: 5px; 
+            transition: 0.5s ease; font-weight: 700; border-radius: 2px; 
+        }
+        .btn-close:hover { background: var(--kido-red); color: #fff; box-shadow: 0 0 40px var(--kido-red); transform: scale(1.05); }
+
+        .story-text {
+            font-family: 'Cormorant Garamond'; color: #ccc;
+            font-size: 1.35rem; line-height: 1.8; text-align: justify;
+            max-height: 55vh; 
+            overflow-y: auto;
+            padding-right: 25px; margin: 30px 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
+        
+        .story-text::-webkit-scrollbar { width: 4px; }
+        .story-text::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .story-text::-webkit-scrollbar-thumb { background: var(--kido-red); border-radius: 10px; }
+        
+        .highlight-red { color: var(--kido-red); font-weight: bold; font-family: 'Cinzel'; text-shadow: 0 0 10px rgba(255,0,0,0.4); }
+
+        .audio-player { 
+            position: fixed; bottom: 40px; left: 40px; z-index: 2000; 
+            background: rgba(0,0,0,0.85); border: 1px solid rgba(255,0,0,0.3); 
+            padding: 15px 25px; border-radius: 100px; display: flex; 
+            align-items: center; backdrop-filter: blur(15px); transition: 0.4s; 
+        }
+        #volume-slider { width: 60px; accent-color: var(--kido-red); margin-left: 15px; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+    <div class="vignette"></div>
+    <canvas id="sakura-canvas"></canvas>
+
+    <audio id="bg-audio" loop>
+        <source src="https://cdn.discordapp.com/attachments/1109868874427543647/1492534777407082536/Hermits_Gorge.mp3?ex=69e04c14&is=69defa94&hm=def7a27c4862751eb20a6f672b7f054a9dab0308dac4ff0ac8fe9d2f2ece372e&" type="audio/mpeg">
+    </audio>
+
+    <div class="audio-player">
+        <div id="music-toggle" style="cursor:pointer; color:var(--kido-red); width: 20px;"><i class="fas fa-play" id="play-icon"></i></div>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.3">
+    </div>
+
+    <header id="main-header">
+        <img src="https://imgur.com/kIYSvXM.png" alt="Kido Logo" class="logo-top">
+        <nav>
+            <ul>
+                <li><a href="#home">MANUSCRIT</a></li>
+                <li><a href="#lore">HISTOIRE</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1 class="mist-title" data-aos="zoom-out" data-aos-duration="2500">L'Ancien Temps..<br>Erebe Ryomen</h1>
+        <div class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">LE NÉANT ET LA RENAISSANCE</div>
+    </section>
+
+    <section id="lore" class="main-section">
+        <div class="lore-grid">
+            <a href="#details-histoire" class="clickable-card" data-aos="fade-up">
+                <img src="https://imgur.com/kIYSvXM.png" class="logo-spell-grid">
+                <h3>L'Histoire</h3>
+                <p>Le récit d'un homme brisé, d'un clan déchu et de l'avènement d'un nouveau mal.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="details-histoire" class="details-section">
+        <div class="content-box">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-left">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-right">
+            <h2 style="font-family:'Shojumaru'; font-size:2.8rem; color:var(--kido-red); margin-bottom: 10px;">L'Histoire</h2>
+            <h4 style="font-family:'Cinzel'; color:#888; letter-spacing:3px; margin-bottom:20px;">CHRONIQUES D'EREBE RYOMEN</h4>
+            <div class="story-text">
+                À l’époque, Erebe n’était qu’un homme parmi tant d’autres… Il vivait avec sa femme, au sein d'un clan respecté qui était établi sur le Mont Kōya. Il avait fondé une famille, eu des enfants, une femme aimante… pourtant, quelque chose en lui semblait brisé. Renier par les siens, rejeté, il continuait malgré tout de porter leur nom. Ce clan était réputé pour sa force et ses techniques uniques, caché au cœur de ce mont enneigé, ne vivant que pour préserver son héritage. Mais Erebe, lui, refusait cette voie. Dès son plus jeune âge, he avait choisi de renoncer à manier les lames, malgré son talent. La violence, le sang, la mort… rien de tout cela ne l’attirait. C’était ce que sa mère lui avait enseigné avant de périr elle aussi, rejetée par ce même clan. Alors, dans l’ombre de ces derniers, Erebe s’était construit autre chose : une famille, un foyer, des enfants qu’il chérissait, devenant malgré tout un homme heureux… mais aux yeux du clan, il n’était qu’un échec persistant.<br><br>
+
+                Une nuit, alors que sa famille dormait paisiblement, des hommes arrivèrent. Ils attendirent que tout s’éteigne, puis pénétrèrent dans la maison, avançant en silence de couloir en couloir jusqu’à la chambre des enfants… qu’ils massacrèrent dans leur sommeil, sans bruit, sans hésitation. Ensuite, ils entrèrent dans la chambre d’Erebe et emportèrent sa femme sans qu’il ne s’en rende compte. Au matin, Erebe se réveilla dans un silence anormal. Il parcourut la maison, pièce après pièce, jusqu’à tomber sur une immense mare de sang. Pris de panique, he courut et ouvrit la porte… découvrant l’horreur. Ses enfants, sans vie. Alors qu’il s’effondrait, une voix s’éleva derrière lui : « Viens donc, Erebe… nous avons quelque chose pour toi. »<br><br>
+
+                Sans résister, il suivit ces hommes jusqu’à un temple du clan. Là, dans un silence pesant, les portes s’ouvrirent lentement, comme si le temps lui-même ralentissait… et il la vit. Sa femme, à peine vivante, le corps marqué, le visage brisé. Son cœur s’emballa, ses poings se serrèrent, mais avant qu’il ne puisse agir, on l’enchaîna face à elle. « Nous avons détruit ce que tu as créé… ta famille. Maintenant, Erebe, nous allons détruire ce qui te rend faible. » Les larmes coulèrent, mais sa haine n’était pas dirigée vers eux… elle était dirigée contre lui-même. Il avait échoué. Il n’avait jamais voulu cette vie, ni ce clan, seulement vivre entouré des siens. Un homme masqué s’avança alors, une lame à la main : « Nous ne pouvons te laisser dans cette faiblesse… toi qui portes ce nom, ce sang… Erebe Ryomen. Il est temps de te libérer. » Erebe ne put rien dire. Pas un mot. Pas un geste. La lame s’éleva… puis tomba. Sa tête roula au sol.<br><br>
+
+                Erebe resta là, figé, regardant le corps sans vie de celle qu’il aimait. Aucun cri. Aucune larme. Plus rien. Ses yeux devinrent vides… toute émotion disparut, engloutie dans un silence absolu. Il ne restait plus que le néant... Les chaînes qu’ils avaient placées autour de son corps, le forçant à assister à ce massacre, se retirèrent, lui rendant enfin la capacité de se mouvoir. Il se releva lentement, les mains en sang, marquées par la force qu’il avait exercée pour tenter de les arrêter… mais seul l’échec subsistait. Debout, il fixa chacun d’entre eux présents dans la salle. Sans un mot, il attrapa un katana à la lame noire, où des kanjis signifiant <span class="highlight-red">mort</span> et <span class="highlight-red">renaissance</span> étaient gravés dans le sang d’autrui… puis il quitta les lieux. Ceux qui restaient à l’intérieur ne virent plus un homme, mais un être n’ayant plus rien à perdre : son haori recouvert de sang, une lame dans la main droite… et, dans l’autre, le désespoir. Pendant plusieurs nuits, le « renié » du clan sembla disparaître dans la brume rouge qui enveloppait le Mont Kōya, comme englouti par elle.<br><br>
+
+                <span class="highlight-red">Plusieurs mois plus tard...</span><br>
+                Alors que la nuit était calme, un homme sortit de cette brume rouge, incarnation même des meurtres de ce clan. Il était là, le regard toujours vide, une lame à la main, portant encore ce qu’il avait acquis… le désespoir. Désormais, il arborait un signe : une tunique entièrement noire rappelant le néant, recouverte d’un haori marqué par la nuit, avec en son centre une rose rouge. Il releva lentement la tête, observant autour de lui ses anciens comparses encore présents, encore éveillés… peut-être des gardes, peut-être de simples âmes de passage. Sa lame traînait contre le sol, grinçant, rayant la pierre à chacun de ses pas, jusqu’à atteindre les portes principales. L’un des membres qu’Erebe avait autrefois connu s’approcha de lui et prononça : « Erebe ! Cela fait..», mais il ne termina jamais sa phrase, sa tête roulant au sol dans l’instant.<br><br>
+
+                Erebe avança dans le village, jusqu’à apercevoir un groupe d’hommes, d’anciens camarades. Ils le virent, il les vit. L’un d’eux le pointa du doigt, mais une lame traversa l’air telle une étoile, perforant son crâne en un instant. Une seconde tête tomba aussitôt, celle d’un autre, abattu sans même comprendre. Erebe s’approcha alors du groupe et, avec une précision froide et irréelle, les élimina tous avec une facilité terrifiante. Il continua d’avancer parmi les cadavres, le corps couvert de sang, sa lame toujours traînée au sol, lourde, oppressante, jusqu’à atteindre le temple principal de son clan, au Mont Kōya. Il entra de force, le bruit du sang tombant au sol résonnant dans tout le temple, annonçant sa venue. Erebe, ou plutôt Hidan, avança jusqu’à la pièce du chef et le vit, agenouillé, immobile, comme s’il attendait ce moment depuis toujours. Un silence pesant s’installa, aucun bruit ne venant troubler l’instant… puis, lorsque le chef releva la tête, Erebe avait disparu. Pourtant, à l’extérieur, il ne restait plus rien : hommes, femmes, enfants… tous avaient été décimés, et le nom « Ryomen » avait cessé d’exister.<br><br>
+
+                Alors que le silence régnait après le massacre, Erebe se tenait immobile au centre du temple, son corps encore chaud du sang des siens, sa lame glissant lentement entre ses doigts. Plus rien ne résonnait en lui… ni colère, ni tristesse… seulement un vide profond, absolu. C’est à cet instant que quelque chose changea. Une présence. Invisible, lourde… oppressante. L’air lui-même sembla se déformer, comme si la réalité refusait ce qui venait d’apparaître. Une voix, calme, presque fascinée, brisa le silence : « Voilà donc… ce qu’il reste d’un homme ayant tout perdu. » Erebe ne répondit pas. Son regard vide fixa l’obscurité devant lui. Une silhouette émergea lentement, non pas en marchant… mais comme si elle s’était toujours trouvée là. « Tu as tout détruit… sans hésiter. Sans émotion. Même les démons n’agissent pas avec une telle pureté. »<br><br>
+
+                Un liquide sombre tomba au sol. Pas du sang humain… quelque chose de plus dense, de plus ancien. « Tu n’es plus fait pour ce monde, Erebe Ryomen. Ce vide en toi… je peux lui donner un sens. » Un silence. Puis, sans prévenir, la créature apparut devant lui. Trop vite pour être vue. Une main saisit son visage, le forçant à relever la tête. Pour la première fois… Erebe ressentit quelque chose. Une douleur. Brûlante. Son corps se crispa alors que ce sang étranger pénétrait en lui, coulant dans ses veines comme du poison vivant. Ses genoux frappèrent le sol, sa respiration se brisa, ses muscles se contractèrent violemment. Chaque battement de son cœur devint insupportable… puis incontrôlable. Des images. Des voix. Des cris. Sa famille. Le sang. Le vide. Tout se mélangea… puis se déforma. Son corps changeait. Sa chair se tordait, se reforgait, se reconstruisait sous une logique qui n’était plus humaine. Ses ongles s’enfoncèrent dans le sol, brisant la pierre, tandis qu’un rire étouffé.. le sien.. échappa sans qu’il ne le contrôle. « Accepte-le… ou disparais. »<br><br>
+
+                Puis… tout s’arrêta. Le silence revint. Erebe ne respirait plus. Lentement… il se releva. Ses yeux s’ouvrirent à nouveau. Mais ce n’étaient plus ceux d’un homme. Une teinte anormale y brillait, profonde, instable… comme si quelque chose observait à travers lui. Son corps, autrefois brisé, était désormais intact… mais différent. Plus dense. Plus vivant. Plus mort aussi. Il regarda sa main… puis le sang qui coulait encore sur le sol. Une sensation nouvelle l’envahit. Pas de tristesse. Pas de rage. <span class="highlight-red">Faim.</span><br><br>
+
+                La créature l’observa, satisfaite. « Voilà… tu es né une seconde fois. » Erebe ou plutôt ce qu’il était devenu... ne répondit pas. Il se contenta de pencher légèrement la tête… puis, dans un mouvement imperceptible, disparut dans l’ombre du temple, laissant derrière lui une seule certitude : Ce massacre… n’était que le début.
+            </div>
+            <a href="#lore" class="btn-close">FERMER L'HISTOIRE</a>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1500, once: true, easing: 'ease-out-quint' });
+        
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 80) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        const audio = document.getElementById('bg-audio');
+        const toggleBtn = document.getElementById('music-toggle');
+        const playIcon = document.getElementById('play-icon');
+        const volumeSlider = document.getElementById('volume-slider');
+
+        toggleBtn.addEventListener('click', () => {
+            if (audio.paused) { 
+                audio.play().catch(e => console.log("Interaction requise")); 
+                playIcon.className = 'fas fa-pause'; 
+            } else { 
+                audio.pause(); 
+                playIcon.className = 'fas fa-play'; 
+            }
+        });
+        volumeSlider.addEventListener('input', (e) => { audio.volume = e.target.value; });
+
+        const canvas = document.getElementById('sakura-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, petals = [];
+
+        function init() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            petals = Array.from({ length: 45 }, () => ({
+                x: Math.random() * w, y: Math.random() * h,
+                size: Math.random() * 3 + 2,
+                speed: Math.random() * 0.4 + 0.15,
+                angle: Math.random() * Math.PI * 2,
+                spin: Math.random() * 0.02,
+                color: Math.random() > 0.8 ? '#ff0000' : '#ffffff'
+            }));
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            petals.forEach(p => {
+                ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.angle);
+                ctx.fillStyle = p.color; ctx.globalAlpha = 0.2;
+                ctx.beginPath(); ctx.ellipse(0, 0, p.size, p.size * 1.5, 0, 0, Math.PI * 2);
+                ctx.fill(); ctx.restore();
+                p.y += p.speed; p.angle += p.spin;
+                if (p.y > h) p.y = -20;
+            });
+            requestAnimationFrame(draw);
+        }
+        window.addEventListener('resize', init);
+        init(); draw();
+    </script>
+</body>
+</html>
