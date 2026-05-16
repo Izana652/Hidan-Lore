@@ -219,7 +219,7 @@
     <canvas id="sakura-canvas"></canvas>
 
     <audio id="bg-audio" loop>
-        <source src="https://cdn.discordapp.com/attachments/1109868874427543647/1492534777407082536/Hermits_Gorge.mp3?ex=69fbfb94&is=69faaa14&hm=e7f10a6e3db35099ab0b42372e357cc26c410bc51dc4ed1591d9d50a9c6ddd9a&" type="audio/mpeg">
+        <source src="https://cdn.discordapp.com/attachments/1109868874427543647/1492534777407082536/Hermits_Gorge.mp3?ex=6a09d354&is=6a0881d4&hm=5c99d87241b2fbcbdbe43f40b641d1072aaf6caf7085c59a7dde571784eae8fe&" type="audio/mpeg">
     </audio>
 
     <div class="audio-player">
