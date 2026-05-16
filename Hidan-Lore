@@ -7,7 +7,7 @@
     
     <link rel="icon" type="image/png" href="https://imgur.com/kIYSvXM.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Noto+Sans+JP:wght@300;700&family=Shojumaru&family=Cormorant+Garamond:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Noto+Sans+JP:wght@300;700&family=Shojumaru&family=Cormorant+Garamond:ital,wght=1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -104,13 +104,13 @@
         @keyframes pulseText { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
         .hero-subtitle { font-family: 'Cinzel'; color: var(--kido-red); letter-spacing: 15px; font-size: 0.9rem; opacity: 0.8; margin-top: 15px; font-weight: 700; text-align: center; }
 
-        .main-section { position: relative; z-index: 3; padding: 0 12% 120px; display: flex; justify-content: center; }
-        .lore-grid { max-width: 500px; width: 100%; }
+        .main-section { position: relative; z-index: 3; padding: 0 5% 120px; display: flex; justify-content: center; }
+        .lore-grid { max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .clickable-card {
             background: rgba(15, 0, 0, 0.45);
             border: 1px solid rgba(255, 0, 0, 0.1);
-            padding: 70px 40px; border-radius: 4px;
+            padding: 60px 30px; border-radius: 4px;
             transition: var(--transition-main);
             text-align: center; backdrop-filter: blur(8px);
             display: flex; flex-direction: column; align-items: center;
@@ -132,6 +132,7 @@
             margin-bottom: 35px; border: 1px solid var(--kido-red); 
             padding: 12px; filter: drop-shadow(0 0 10px var(--kido-glow)); 
             transition: var(--transition-main);
+            object-fit: contain;
         }
 
         .clickable-card:hover .logo-spell-grid { 
@@ -243,14 +244,30 @@
 
     <section id="lore" class="main-section">
         <div class="lore-grid">
+            <!-- Case Histoire -->
             <a href="#details-histoire" class="clickable-card" data-aos="fade-up">
                 <img src="https://imgur.com/kIYSvXM.png" class="logo-spell-grid">
                 <h3>L'Histoire</h3>
                 <p>Le récit d'un homme brisé, d'un clan déchu et de l'avènement d'un nouveau mal.</p>
             </a>
+
+            <!-- Case Clan -->
+            <a href="#details-clan" class="clickable-card" data-aos="fade-up" data-aos-delay="150">
+                <img src="https://imgur.com/dlztfdY.png" class="logo-spell-grid">
+                <h3>Le Clan</h3>
+                <p>Les origines sombres d'une lignée maudite liée par un pacte ancestral au Mont Kōya.</p>
+            </a>
+
+            <!-- Case Héritage -->
+            <a href="#details-heritage" class="clickable-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://imgur.com/lUILPLD.png" class="logo-spell-grid">
+                <h3>Héritage</h3>
+                <p>La perception interdite du Monde Creux, une vision qui surpasse les limites de la chair.</p>
+            </a>
         </div>
     </section>
 
+    <!-- Fenêtre Histoire -->
     <section id="details-histoire" class="details-section">
         <div class="content-box">
             <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-left">
@@ -269,7 +286,7 @@
                 <span class="highlight-red">Plusieurs mois plus tard...</span><br>
                 Alors que la nuit était calme, un homme sortit de cette brume rouge, incarnation même des meurtres de ce clan. Il était là, le regard toujours vide, une lame à la main, portant encore ce qu’il avait acquis… le désespoir. Désormais, il arborait un signe : une tunique entièrement noire rappelant le néant, recouverte d’un haori marqué par la nuit, avec en son centre une rose rouge. Il releva lentement la tête, observant autour de lui ses anciens comparses encore présents, encore éveillés… peut-être des gardes, peut-être de simples âmes de passage. Sa lame traînait contre le sol, grinçant, rayant la pierre à chacun de ses pas, jusqu’à atteindre les portes principales. L’un des membres qu’Erebe avait autrefois connu s’approcha de lui et prononça : « Erebe ! Cela fait..», mais il ne termina jamais sa phrase, sa tête roulant au sol dans l’instant.<br><br>
 
-                Erebe avança dans le village, jusqu’à apercevoir un groupe d’hommes, d’anciens camarades. Ils le virent, il les vit. L’un d’eux le pointa du doigt, mais une lame traversa l’air telle une étoile, perforant son crâne en un instant. Une seconde tête tomba aussitôt, celle d’un autre, abattu sans même comprendre. Erebe s’approcha alors du groupe et, avec une précision froide et irréelle, les élimina tous avec une facilité terrifiante. Il continua d’avancer parmi les cadavres, le corps couvert de sang, sa lame toujours traînée au sol, lourde, oppressante, jusqu’à atteindre le temple principal de son clan, au Mont Kōya. Il entra de force, le bruit du sang tombant au sol résonnant dans tout le temple, annonçant sa venue. Erebe, ou plutôt Hidan, avança jusqu’à la pièce du chef et le vit, agenouillé, immobile, comme s’il attendait ce moment depuis toujours. Un silence pesant s’installa, aucun bruit ne venant troubler l’instant… puis, lorsque le chef releva la tête, Erebe avait disparu. Pourtant, à l’extérieur, il ne restait plus rien : hommes, femmes, enfants… tous avaient été décimés, et le nom « Ryomen » avait cessé d’exister.<br><br>
+                Erebe avança dans le village, jusqu’à apercevoir un groupe d’hommes, d’anciens camarades. Ils le virent, il les vit. L’un d'eux le pointa du doigt, mais une lame traversa l’air telle une étoile, perforant son crâne en un instant. Une seconde tête tomba aussitôt, celle d’un autre, abattu sans même comprendre. Erebe s’approcha alors du groupe et, avec une précision froide et irréelle, les élimina tous avec une facilité terrifiante. Il continua d’avancer parmi les cadavres, le corps couvert de sang, sa lame toujours traînée au sol, lourde, oppressante, jusqu’à atteindre le temple principal de son clan, au Mont Kōya. Il entra de force, le bruit du sang tombant au sol résonnant dans tout le temple, annonçant sa venue. Erebe, ou plutôt Hidan, avança jusqu’à la pièce du chef et le vit, agenouillé, immobile, comme s’il attendait ce moment depuis toujours. Un silence pesant s’installa, aucun bruit ne venant troubler l’instant… puis, lorsque le chef releva la tête, Erebe avait disparu. Pourtant, à l’extérieur, il ne restait plus rien : hommes, femmes, enfants… tous avaient été décimés, et le nom « Ryomen » had cessé d’exister.<br><br>
 
                 Alors que le silence régnait après le massacre, Erebe se tenait immobile au centre du temple, son corps encore chaud du sang des siens, sa lame glissant lentement entre ses doigts. Plus rien ne résonnait en lui… ni colère, ni tristesse… seulement un vide profond, absolu. C’est à cet instant que quelque chose changea. Une présence. Invisible, lourde… oppressante. L’air lui-même sembla se déformer, comme si la réalité refusait ce qui venait d’apparaître. Une voix, calme, presque fascinée, brisa le silence : « Voilà donc… ce qu’il reste d’un homme ayant tout perdu. » Erebe ne répondit pas. Son regard vide fixa l’obscurité devant lui. Une silhouette émergea lentement, non pas en marchant… mais comme si elle s’était toujours trouvée là. « Tu as tout détruit… sans hésiter. Sans émotion. Même les démons n’agissent pas avec une telle pureté. »<br><br>
 
@@ -280,6 +297,61 @@
                 La créature l’observa, satisfaite. « Voilà… tu es né une seconde fois. » Erebe ou plutôt ce qu’il était devenu... ne répondit pas. Il se contenta de pencher légèrement la tête… puis, dans un mouvement imperceptible, disparut dans l’ombre du temple, laissant derrière lui une seule certitude : Ce massacre… n’était que le début.
             </div>
             <a href="#lore" class="btn-close">FERMER L'HISTOIRE</a>
+        </div>
+    </section>
+
+    <!-- Fenêtre du Clan -->
+    <section id="details-clan" class="details-section">
+        <div class="content-box">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-left">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-right">
+            <h2 style="font-family:'Shojumaru'; font-size:2.8rem; color:var(--kido-red); margin-bottom: 10px;">Le Clan</h2>
+            <h4 style="font-family:'Cinzel'; color:#888; letter-spacing:3px; margin-bottom:20px;">LES ORIGINES DES RYOMEN</h4>
+            <div class="story-text">
+                Il y a plusieurs siècles, bien avant que le nom Ryomen ne devienne synonyme de peur au sommet du Mont Kōya, le clan n’était encore qu’un groupe d’hommes condamnés à disparaître. À cette époque, le Japon traversait des guerres incessantes, des famines et des massacres si violents que même les montagnes semblaient pleurer le sang des hommes. Les ancêtres du clan étaient alors des guerriers errants, abandonnés par leur seigneur après une bataille perdue. Blessés, affamés et traqués, ils trouvèrent refuge dans les hauteurs du Mont Kōya, là où même les animaux refusaient de s’aventurer.<br><br>
+                
+                Mais la montagne cachait quelque chose.<br><br>
+                
+                Au cœur d’une tempête rougeâtre, les survivants découvrirent un ancien sanctuaire enfoui sous la neige et les pierres. À l’intérieur se trouvait une entité inconnue, une présence si écrasante que plusieurs hommes moururent simplement en croisant son regard. La légende raconte qu’elle ne parlait pas comme un humain… elle murmurait directement dans l’esprit. Cette chose leur proposa un pacte : survivre en abandonnant leur humanité. Désespérés, les guerriers acceptèrent.<br><br>
+                
+                Ce fut la naissance des Ryomen.<br><br>
+                
+                Le sang qu’ils reçurent transforma leurs corps. Leurs sens devinrent anormaux, leurs capacités dépassèrent celles des hommes ordinaires, et une violence nouvelle naquit dans leurs instincts. Mais ce pouvoir avait un prix : chaque génération perdait un peu plus son humanité. Avec le temps, le clan développa l’idée que la faiblesse était une maladie et que les émotions empêchaient l’évolution. Les enfants étaient élevés comme des armes, les plus faibles abandonnés ou exécutés, et seuls ceux capables de tuer sans hésitation étaient considérés dignes de porter le nom Ryomen.<br><br>
+                
+                Le Mont Kōya devint alors leur royaume. Caché dans les brumes rouges qui entouraient la montagne, le clan grandit dans l’ombre, vivant loin du monde, observant les guerres humaines comme de simples spectateurs. Certains disaient que les Ryomen protégeaient les frontières entre les hommes et les démons. D’autres affirmaient qu’ils étaient eux-mêmes devenus quelque chose de pire. Avec les siècles, leur nom disparut presque des livres, remplacé par des récits murmurés à voix basse : des guerriers aux yeux vides, vêtus de noir, capables d’effacer des villages entiers en une seule nuit.<br><br>
+                
+                Mais au sein même du clan existait une ancienne prophétie, transmise uniquement aux chefs : un jour naîtrait un Ryomen incapable d’hériter pleinement du sang du clan. Un être vide, rejeté par les siens, qui apporterait soit la destruction totale du clan… soit sa forme la plus pure.<br><br>
+                
+                Ce nom…<br>
+                était <span class="highlight-red">Erebe Ryomen</span>.
+            </div>
+            <a href="#lore" class="btn-close">FERMER LE CLAN</a>
+        </div>
+    </section>
+
+    <!-- Nouvelle Fenêtre Héritage -->
+    <section id="details-heritage" class="details-section">
+        <div class="content-box">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-left">
+            <img src="https://imgur.com/qKJ0iF6.png" class="corner-logo top-right">
+            <h2 style="font-family:'Shojumaru'; font-size:2.8rem; color:var(--kido-red); margin-bottom: 10px;">Héritage</h2>
+            <h4 style="font-family:'Cinzel'; color:#888; letter-spacing:3px; margin-bottom:20px;">LE MONDE CREUX</h4>
+            <div class="story-text">
+                Le clan Ryomen possède un passif héréditaire appelé <span class="highlight-red">“Le Monde Creux”</span>. Contrairement à une simple capacité visuelle, cet état est décrit par le clan comme une “vision au-delà de la chair”. Lorsqu’un Ryomen atteint un calme absolu au combat, un état où ses émotions disparaissent presque entièrement, ses yeux changent subtilement : les pupilles deviennent rouges sombres tandis que les veines autour de l’iris semblent noircir, comme si quelque chose regardait à travers lui.<br><br>
+                
+                À cet instant, le monde autour de lui paraît ralentir.<br><br>
+                
+                Le membre du clan commence alors à percevoir ce que les humains ordinaires ne peuvent voir : la circulation du sang, les contractions musculaires, la respiration, les tensions nerveuses et même les micro-mouvements précédant une attaque. Chaque geste devient prévisible avant même d’être totalement exécuté. Un adversaire qui serre légèrement son épaule avant de frapper, un changement dans le rythme cardiaque, une respiration plus lourde… tout devient visible aux yeux d’un Ryomen éveillé.<br><br>
+                
+                Mais le Monde Creux ne s’arrête pas au corps.<br><br>
+                
+                Les Ryomen les plus talentueux disent voir “les fissures” d’une personne : ses hésitations, sa peur, ses intentions meurtrières ou ses moments de faiblesse. Face à eux, il devient extrêmement difficile de mentir au combat ou de cacher ses véritables intentions. Certains membres du clan semblaient même capables d’esquiver des attaques sans regarder directement leur adversaire, comme s’ils ressentaient instinctivement ce qui allait arriver.<br><br>
+                
+                Cependant, cette capacité exige une condition très particulière : le vide émotionnel. Plus l’utilisateur ressent de colère, de peur ou de haine, plus sa vision devient instable. Les Ryomen ont donc développé une mentalité froide et détachée, persuadés que les émotions rendent faible. Avec le temps, ceux qui utilisent trop longtemps le Monde Creux finissent peu à peu par perdre naturellement certaines émotions humaines, devenant incapables de ressentir de l’empathie ou de véritables attaches.<br><br>
+                
+                Selon les anciens écrits du clan, le Monde Creux ne permettrait pas seulement de voir le corps… mais “la vérité d’un être”. Et d’après les légendes du Mont Kōya, ceux qui plongent trop profondément dans cette vision finissent par voir quelque chose d’autre les observer en retour.
+            </div>
+            <a href="#lore" class="btn-close">FERMER L'HÉRITAGE</a>
         </div>
     </section>
 
